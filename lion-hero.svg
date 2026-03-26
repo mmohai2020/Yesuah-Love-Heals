@@ -1,0 +1,112 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Realistic lion gradients -->
+    <radialGradient id="lionFace" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" style="stop-color:#f5f5f5;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#e8e8e8;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#d5d5d5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c0c0c0;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="maneDark" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#a8a8a8;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#888888;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#686868;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#484848;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="maneLight" cx="40%" cy="20%" r="50%">
+      <stop offset="0%" style="stop-color:#f0f0f0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#d8d8d8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8b8b8;stop-opacity:1" />
+    </radialGradient>
+    
+    <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8"/>
+    </filter>
+  </defs>
+  
+  <!-- Soft background -->
+  <rect width="800" height="600" fill="#f8f8f8" opacity="0.1"/>
+  
+  <!-- Lion portrait - side profile like the photograph -->
+  <g transform="translate(100, 80)">
+    
+    <!-- Main head shape - lion profile -->
+    <path d="M300 200 Q280 180 260 185 Q240 190 230 210 Q225 230 235 250 Q245 270 265 285 Q285 295 305 290 Q325 285 340 270 Q350 250 345 230 Q340 210 330 195 Q320 185 305 185 Q295 190 300 200 Z" 
+          fill="url(#lionFace)" stroke="#d0d0d0" stroke-width="0.5"/>
+    
+    <!-- Lion's distinctive nose and muzzle -->
+    <path d="M340 270 Q350 275 360 280 Q365 285 360 290 Q355 295 345 290 Q340 285 340 270 Z" 
+          fill="#b8b8b8" stroke="#a0a0a0" stroke-width="0.3"/>
+    
+    <!-- Nostril -->
+    <ellipse cx="350" cy="280" rx="3" ry="5" fill="#808080"/>
+    
+    <!-- Lion's eye - realistic and expressive -->
+    <ellipse cx="295" cy="220" rx="12" ry="14" fill="#404040"/>
+    <ellipse cx="297" cy="218" rx="4" ry="5" fill="#ffffff" opacity="0.9"/>
+    <circle cx="295" cy="220" r="2" fill="#000000"/>
+    <path d="M285 215 Q290 210 305 215 Q310 220 305 225 Q300 230 285 225 Q280 220 285 215 Z" 
+          fill="#d8d8d8" opacity="0.6"/>
+    
+    <!-- Lion's ear -->
+    <path d="M275 200 Q270 185 265 190 Q263 195 267 205 Q271 210 275 205 Q277 200 275 200 Z" 
+          fill="url(#lionFace)" stroke="#c0c0c0" stroke-width="0.3"/>
+    <path d="M270 195 Q268 193 269 197 Q270 199 272 197 Q271 195 270 195 Z" fill="#a8a8a8"/>
+    
+    <!-- Flowing mane - back layer -->
+    <path d="M200 150 Q150 120 120 140 Q90 160 85 190 Q80 220 95 250 Q110 280 140 300 Q170 315 200 310 Q230 305 250 285 Q265 260 260 230 Q255 200 245 175 Q235 155 220 145 Q205 140 190 150 Q175 160 165 175 Q155 190 150 205 Q145 220 150 235 Q155 250 170 260 Q185 265 200 260 Q215 255 225 245 Q230 235 225 225 Q220 215 210 210 Q200 205 190 210 Q180 215 175 225 Q170 235 175 245 Q180 250 190 245 Q200 240 205 230 Q207 225 205 220 Q203 215 198 218 Q193 221 190 225 Q187 220 190 215 Q195 210 200 215 Q205 210 210 215 Q215 210 220 215 Q225 210 230 215 Q235 210 240 215 Q245 210 250 215 Q255 210 260 215 Q265 210 270 215 Q275 210 280 215" 
+          fill="url(#maneDark)" opacity="0.8" filter="url(#softBlur)"/>
+    
+    <!-- Flowing mane - middle layer -->
+    <path d="M180 130 Q140 100 110 120 Q80 140 75 170 Q70 200 85 230 Q100 260 130 275 Q160 285 190 280 Q220 275 240 255 Q255 230 250 200 Q245 170 235 145 Q225 125 210 115 Q195 110 180 120 Q165 130 155 145 Q145 160 140 175 Q135 190 140 205 Q145 220 160 230 Q175 235 190 230 Q205 225 215 215 Q220 205 215 195 Q210 185 200 180 Q190 175 180 180 Q170 185 165 195 Q160 205 165 215 Q170 220 180 215 Q190 210 195 200 Q197 195 195 190 Q193 185 188 188 Q183 191 180 195" 
+          fill="url(#maneLight)" opacity="0.7"/>
+    
+    <!-- Flowing mane - front layer with individual strands -->
+    <path d="M160 110 Q120 80 90 100 Q60 120 55 150 Q50 180 65 210 Q80 240 110 255 Q140 265 170 260 Q200 255 220 235 Q235 210 230 180 Q225 150 215 125 Q205 105 190 95 Q175 90 160 100 Q145 110 135 125 Q125 140 120 155 Q115 170 120 185 Q125 200 140 210 Q155 215 170 210 Q185 205 195 195 Q200 185 195 175 Q190 165 180 160 Q170 155 160 160 Q150 165 145 175 Q140 185 145 195 Q150 200 160 195 Q170 190 175 180" 
+          fill="url(#maneLight)" opacity="0.9"/>
+    
+    <!-- Individual mane strands for realism -->
+    <path d="M140 90 Q130 85 125 90 Q120 95 125 100 Q130 105 140 100 Q145 95 140 90 Z" 
+          fill="#999999" opacity="0.8"/>
+    <path d="M160 85 Q150 80 145 85 Q140 90 145 95 Q150 100 160 95 Q165 90 160 85 Z" 
+          fill="#aaaaaa" opacity="0.7"/>
+    <path d="M180 90 Q170 85 165 90 Q160 95 165 100 Q170 105 180 100 Q185 95 180 90 Z" 
+          fill="#888888" opacity="0.9"/>
+    
+    <!-- More mane texture -->
+    <path d="M120 120 Q110 115 105 120 Q100 125 105 130 Q110 135 120 130 Q125 125 120 120 Z" 
+          fill="#777777" opacity="0.6"/>
+    <path d="M200 120 Q190 115 185 120 Q180 125 185 130 Q190 135 200 130 Q205 125 200 120 Z" 
+          fill="#999999" opacity="0.8"/>
+    
+    <!-- Whisker spots -->
+    <circle cx="320" cy="250" r="1.5" fill="#888888" opacity="0.7"/>
+    <circle cx="325" cy="245" r="1.2" fill="#888888" opacity="0.6"/>
+    <circle cx="315" cy="255" r="1" fill="#888888" opacity="0.5"/>
+    
+    <!-- Mouth line -->
+    <path d="M345 285 Q355 290 365 295" stroke="#888888" stroke-width="2" fill="none" opacity="0.8"/>
+    
+    <!-- Chin definition -->
+    <path d="M325 295 Q335 300 345 295 Q340 305 330 300 Q325 295 325 295 Z" 
+          fill="#d0d0d0" opacity="0.8"/>
+    
+    <!-- Additional mane volume on the sides -->
+    <path d="M100 180 Q80 170 70 180 Q65 190 70 200 Q75 210 85 205 Q95 200 100 190 Q102 185 100 180 Z" 
+          fill="#666666" opacity="0.7"/>
+    
+    <path d="M90 220 Q70 210 60 220 Q55 230 60 240 Q65 250 75 245 Q85 240 90 230 Q92 225 90 220 Z" 
+          fill="#777777" opacity="0.6"/>
+    
+    <!-- Upper mane flowing upward -->
+    <path d="M170 70 Q160 60 150 70 Q145 80 150 90 Q155 100 165 95 Q175 90 180 80 Q182 75 180 70 Q178 65 175 68 Q172 71 170 70 Z" 
+          fill="#aaaaaa" opacity="0.8"/>
+    
+    <path d="M190 65 Q180 55 170 65 Q165 75 170 85 Q175 95 185 90 Q195 85 200 75 Q202 70 200 65 Q198 60 195 63 Q192 66 190 65 Z" 
+          fill="#bbbbbb" opacity="0.7"/>
+    
+  </g>
+  
+</svg>
