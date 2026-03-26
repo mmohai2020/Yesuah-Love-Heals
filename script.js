@@ -240,43 +240,77 @@ document.addEventListener('DOMContentLoaded', () => {
     startAuto();
     window.addEventListener('resize', initCarousel);
 
-    // ---- Prayer form feedback ----
+    // ---- Generic AJAX form handler for Formspree ----
+    function handleFormspreeForm(form, { onSuccess }) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const originalHTML = btn ? btn.innerHTML : null;
+
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+            }
+
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (res.ok) {
+                    form.reset();
+                    onSuccess(btn, originalHTML);
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalHTML;
+                }
+                alert('Something went wrong. Please try again or email us directly.');
+            }
+        });
+    }
+
+    // Prayer form
     const prayerForm = document.getElementById('prayer-form');
     if (prayerForm) {
-        // Formspree handles the actual submission; show a thank-you in-page
-        prayerForm.addEventListener('submit', function(e) {
-            // Let Formspree handle it; show a polite message after a tick
-            const btn = prayerForm.querySelector('button[type="submit"]');
-            if (btn) {
-                setTimeout(() => {
-                    btn.textContent = 'Prayer submitted — God bless you!';
-                    btn.disabled = true;
-                }, 100);
+        handleFormspreeForm(prayerForm, {
+            onSuccess(btn, originalHTML) {
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-check"></i> Prayer submitted — God bless you!';
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                        btn.disabled = false;
+                    }, 5000);
+                }
             }
         });
     }
 
-    // ---- Newsletter form feedback ----
+    // Newsletter form
     const newsletterForm = document.getElementById('newsletter-form');
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function() {
-            const btn = newsletterForm.querySelector('button[type="submit"]');
-            if (btn) {
-                setTimeout(() => {
-                    btn.textContent = 'Subscribed!';
+        handleFormspreeForm(newsletterForm, {
+            onSuccess(btn) {
+                if (btn) {
+                    btn.textContent = '✓ Subscribed!';
                     btn.disabled = true;
-                }, 100);
+                }
             }
         });
     }
 
-    // ---- Speaking form feedback ----
+    // Speaking engagement form
     const speakingForm = document.getElementById('speaking-form');
     if (speakingForm) {
-        speakingForm.addEventListener('submit', function() {
-            setTimeout(() => {
+        handleFormspreeForm(speakingForm, {
+            onSuccess() {
                 closeModal('modal-speaking');
-            }, 200);
+            }
         });
     }
 
